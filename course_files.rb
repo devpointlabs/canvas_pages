@@ -27,7 +27,9 @@ while page <= pages + 1
 end
 
 content.each do |obj|
-  File.open(File.join(Dir.pwd, "/#{COURSE}/files", obj['display_name']), "w+") do |f|
+  ext = obj['display_name'].split(".").last
+  next if ext == 'mp4'
+  File.open(File.join(Dir.pwd, "/#{COURSE}/files", "#{obj['id']}.#{ext}"), "w+") do |f|
     f << open(obj['url'], {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}).read
   end
 end
