@@ -8,6 +8,8 @@ BASE_URL = 'https://canvas.devpointlabs.com/api/v1'
 TOKEN = ENV['TOKEN']
 COURSE = ENV['COURSE']
 
+`rm -rf ${COURSE}`
+
 auth = {"Authorization" => "Bearer #{TOKEN}"}
 HTTParty::Basement.default_options.update(verify: false)
 url = "#{BASE_URL}/courses/#{COURSE}/pages?per_page=100"
