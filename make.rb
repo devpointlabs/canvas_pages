@@ -1,6 +1,5 @@
 require_relative './canvas'
 require 'fileutils'
-require 'pry'
 
 class Make < Canvas
   def initialize(course)

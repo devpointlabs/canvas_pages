@@ -14,7 +14,7 @@ class Pages < Canvas
 
   def clean
     puts "Cleaning directory #{@course}/"
-    `rm -rf ${COURSE}`
+    `rm -rf #{@course}`
   end
 
   def build_data
