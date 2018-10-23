@@ -37,5 +37,13 @@ class Canvas
     end
   end
 
+  def make_single_request(url)
+    HTTParty::Basement.default_options.update(verify: false)
+    HTTParty.get(
+      "#{@base_url}/courses/#{@course}/#{url}",
+      headers: @auth 
+    )
+  end
+
 end
 
