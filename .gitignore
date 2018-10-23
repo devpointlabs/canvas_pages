@@ -1,3 +1,5 @@
 .env
 *.html
 files
+main-*.js
+styles-*.css

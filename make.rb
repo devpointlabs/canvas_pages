@@ -62,7 +62,14 @@ end
     fo.puts HEAD
     fo.puts NAV
     File.foreach(original_file) do |li|
-      #TODO replace images with image found in files/
+      files = `ls #{COURSE}/files/`.split("\n")
+      if li.match(/\<img/)
+          li.scan(/files\/\d+/).each do |m|
+          id = m.split('files/')[1]
+          filename = files.select { |f| f.match(id) }[0]
+          li.gsub!("https://canvas.devpointlabs.com/courses/#{COURSE}/files/#{id}/preview", "./files/#{filename}")
+        end
+      end
       fo.puts li
     end
     fo.puts "<script src='./main-#{COURSE}.js'></script>"
